@@ -1,0 +1,2 @@
+scapy==2.4.3
+scapy-python3==0.26
