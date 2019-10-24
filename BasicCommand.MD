@@ -31,3 +31,12 @@ any wireless card (Wi-Fi, Bluetooth...) would be disabled for transmitting. To f
 
 Mac changer: `macchanger -A <interface>`
 
+
+### MAC Address
+
+- Each network card has a physical static address assigned by the card manufacturer called MAC (Media Access Control)
+- This address is used between device to identify each other and to transfer packets to the right place.
+- Each packet has a source MAC and a destination MAC
+
+Found Address: `cat /sys/class/net/wlan0/address`
+
