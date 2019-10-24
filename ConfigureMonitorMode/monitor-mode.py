@@ -10,7 +10,6 @@ from scapy.all import *
 from subprocess import call
 from platform import system
 from signal import SIGINT
-from uuid import getnode as get_mac
 
 
 # define variables
@@ -48,9 +47,9 @@ def InitMon():
 
 def GetMAC(iface):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    info = fcntl.ioctl(sock.fileno(), 0x8927, struct.pack('256s', iface[:15]))
-    macaddr = ''.join(['%02x:' % ord(char) for char in info[18:24]])[-1]
-    return macaddr
+    info = fcntl.ioctl(sock.fileno(), 0x8927,  struct.pack('256s', bytes(iface[:15], 'utf-8')))
+    return ''.join(['%02x:' % b for b in info[18:24]])[:-1]
+
 
 # check if OS is linux
 OScheck()
